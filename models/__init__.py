@@ -1,13 +1,10 @@
 # python3.7
 """Collects all available models together."""
 
-from .model_zoo import MODEL_ZOO
-from .stylegan_generator import StyleGANGenerator
 from .stylegan_discriminator import StyleGANDiscriminator
-from .stylegan_generator_idinvert import StyleGANGeneratorIdinvert
+from idinvert_pytorch.models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
 
 __all__ = [
-    'MODEL_ZOO', 'StyleGANGenerator',
     'StyleGANDiscriminator',
     'build_generator', 'build_discriminator', 'build_model', 'parse_gan_type'
 ]
@@ -32,8 +29,6 @@ def build_generator(gan_type, resolution, **kwargs):
         raise ValueError(f'Invalid GAN type: `{gan_type}`!\n'
                          f'Types allowed: {_GAN_TYPES_ALLOWED}.')
 
-    if gan_type == 'stylegan':
-        return StyleGANGenerator(resolution, **kwargs)
     if gan_type == 'stylegan_idinvert':
         return StyleGANGeneratorIdinvert("styleganinv_ffhq256")
     raise NotImplementedError(f'Unsupported GAN type `{gan_type}`!')
@@ -96,6 +91,6 @@ def parse_gan_type(module):
     Raises:
         ValueError: If the GAN type is unknown.
     """
-    if isinstance(module, (StyleGANGenerator, StyleGANDiscriminator)):
+    if isinstance(module, (StyleGANGeneratorIdinvert, StyleGANDiscriminator)):
         return 'stylegan'
     raise ValueError(f'Unable to parse GAN type from type `{type(module)}`!')

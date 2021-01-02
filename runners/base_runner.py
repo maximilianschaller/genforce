@@ -11,10 +11,9 @@ from copy import deepcopy
 import torch
 import torch.distributed as dist
 
-from datasets import BaseDataset
-from datasets import BaseDatasetWithLatent
-from datasets import IterDataLoader
-from models import build_model
+from genforce.datasets import BaseDatasetWithLatent
+from genforce.datasets import IterDataLoader
+from genforce.models import build_model
 from . import controllers
 from . import losses
 from . import misc
@@ -22,9 +21,7 @@ from .optimizer import build_optimizers
 from .running_stats import RunningStats
 import sys
 sys.path.append("..")
-from models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
-from models.stylegan_discriminator import StyleGANDiscriminator
-from models.stylegan_generator import StyleGANGenerator
+from idinvert_pytorch.models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
 
 
 def _strip_state_dict_prefix(state_dict, prefix='module.'):

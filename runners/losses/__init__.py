@@ -1,6 +1,6 @@
 # python3.7
 """Collects all loss functions."""
 
-from .logistic_gan_loss import LogisticGANLoss, FourierRegularizedLogisticGANLoss, FourierRegularizedPerceptualLoss
+from .logistic_gan_loss import FourierRegularizedLogisticGANLoss
 
-__all__ = ['LogisticGANLoss', 'FourierRegularizedLogisticGANLoss', 'FourierRegularizedPerceptualLoss']
+__all__ = ['FourierRegularizedLogisticGANLoss']
