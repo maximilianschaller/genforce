@@ -44,6 +44,11 @@ def parse_args():
                         help='Rank of the current node. (default: %(default)s)')
     parser.add_argument('--options', nargs='+', action=DictAction,
                         help='arguments in dict')
+    parser.add_argument('--lamb', type=str)
+    parser.add_argument('--metric', type=str)
+    parser.add_argument('--baseLR', type=str)
+    parser.add_argument('--nethz', type=str)
+
     return parser.parse_args()
 
 
@@ -61,6 +66,18 @@ def main():
     config.seed = args.seed
     config.launcher = args.launcher
     config.backend = args.backend
+    if args.lamb != None:
+        config.loss['g_loss_kwargs']['lamb'] = float(args.lamb)
+    if args.metric != None:
+        config.loss['g_loss_kwargs']['metric'] = args.metric
+    if args.baseLR != None:
+        config.modules['generator']['opt']['base_lr'] = float(args.baseLR)/2
+    if args.nethz != None:
+        config.nethz = args.nethz
+    config.savename = args.lamb.replace('.','dot') + '_' + args.metric.replace('.','dot') + '_' + args.baseLR.replace('.','dot')
+
+    config.data['train']['root_dir'] = '/cluster/scratch/' + config.nethz + '/data'
+    config.data['val']['root_dir'] = '/cluster/scratch/' + config.nethz + '/data'
 
     # Set CUDNN.
     config.cudnn_benchmark = config.get('cudnn_benchmark', True)
