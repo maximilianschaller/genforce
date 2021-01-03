@@ -9,13 +9,14 @@ import torch
 import torch.distributed as dist
 
 import sys
-sys.path.append('...')
-from genforce.metrics.inception import build_inception_model
-from genforce.metrics.fid import extract_feature
-from genforce.metrics.fid import compute_fid
-from genforce.utils.visualizer import HtmlPageVisualizer
-from genforce.utils.visualizer import save_image
-from genforce.utils.visualizer import load_image
+sys.path.append('..')
+print(sys.path)
+from metrics.inception import build_inception_model
+from metrics.fid import extract_feature
+from metrics.fid import compute_fid
+from utils.visualizer import HtmlPageVisualizer
+from utils.visualizer import save_image
+from utils.visualizer import load_image
 from .base_runner import BaseRunner
 
 __all__ = ['BaseGANRunner']
