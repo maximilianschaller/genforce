@@ -2,13 +2,11 @@
 """Contains the function to build optimizer for runner."""
 
 import math
-
+import os
 import torch
 import sys
-sys.path.append("..")
-from models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
-from models.stylegan_discriminator import StyleGANDiscriminator
-from models.stylegan_generator import StyleGANGenerator
+sys.path.append(os.getcwd())
+from idinvert_pytorch.models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
 
 __all__ = ['build_optimizer', 'build_optimizers']
 
