@@ -8,6 +8,8 @@ import numpy as np
 import torch
 import torch.distributed as dist
 
+import sys
+sys.path.append('..')
 from ..metrics.inception import build_inception_model
 from ..metrics.fid import extract_feature
 from ..metrics.fid import compute_fid
