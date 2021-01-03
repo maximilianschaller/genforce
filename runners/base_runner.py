@@ -11,17 +11,19 @@ from copy import deepcopy
 import torch
 import torch.distributed as dist
 
-from ..datasets import BaseDatasetWithLatent
-from ..datasets import IterDataLoader
-from ..models import build_model
+import sys
+
 from . import controllers
 from . import losses
 from . import misc
 from .optimizer import build_optimizers
 from .running_stats import RunningStats
-import sys
-sys.path.append("..")
-from ...idinvert_pytorch.models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
+
+sys.path.append("...")
+from genforce.datasets import BaseDatasetWithLatent
+from genforce.datasets import IterDataLoader
+from genforce.models import build_model
+from idinvert_pytorch.models.stylegan_generator_idinvert import StyleGANGeneratorIdinvert
 
 
 def _strip_state_dict_prefix(state_dict, prefix='module.'):
