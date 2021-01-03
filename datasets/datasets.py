@@ -95,6 +95,7 @@ class LmdbLoader(object):
         return image
 
 
+
 class BaseDatasetWithLatent(Dataset):
     """Defines the base dataset class.
 

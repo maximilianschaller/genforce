@@ -2,7 +2,7 @@
 """Contains the runner for StyleGAN."""
 
 from .base_gan_runner import BaseGANRunner
-from idinvert_pytorch.utils.inverter import StyleGANInverter
+from ...idinvert_pytorch.utils.inverter import StyleGANInverter
 
 __all__ = ['FourierRegularizedStyleGANRunner']
 

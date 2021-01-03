@@ -5,7 +5,7 @@ import argparse
 
 from torch.utils.data import DataLoader
 from .distributed_sampler import DistributedSampler
-from .datasets import BaseDataset
+#from .datasets import BaseDataset
 
 
 __all__ = ['IterDataLoader']
@@ -101,7 +101,7 @@ class IterDataLoader(object):
     def __len__(self):
         return len(self._dataloader)
 
-
+'''
 def dataloader_test(root_dir, test_num=10):
     """Tests data loader."""
     res = 2
@@ -117,7 +117,7 @@ def dataloader_test(root_dir, test_num=10):
         res *= 2
         bs += 1
         dataloader.overwrite_param(batch_size=bs, resolution=res)
-
+'''
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Test Data Loader.')
@@ -126,4 +126,4 @@ if __name__ == '__main__':
     parser.add_argument('--test_num', type=int, default=10,
                         help='Number of tests. (default: %(default)s)')
     args = parser.parse_args()
-    dataloader_test(args.root_dir, args.test_num)
+    #dataloader_test(args.root_dir, args.test_num)
