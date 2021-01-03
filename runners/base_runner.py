@@ -11,9 +11,9 @@ from copy import deepcopy
 import torch
 import torch.distributed as dist
 
-from genforce.datasets import BaseDatasetWithLatent
-from genforce.datasets import IterDataLoader
-from genforce.models import build_model
+from datasets import BaseDatasetWithLatent
+from datasets import IterDataLoader
+from models import build_model
 from . import controllers
 from . import losses
 from . import misc
