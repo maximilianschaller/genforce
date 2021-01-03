@@ -19,7 +19,7 @@ from . import misc
 from .optimizer import build_optimizers
 from .running_stats import RunningStats
 
-sys.path.append("...")
+sys.path.append(os.getcwd())
 from genforce.datasets import BaseDatasetWithLatent
 from genforce.datasets import IterDataLoader
 from genforce.models import build_model

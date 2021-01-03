@@ -1,11 +1,12 @@
 # python3.7
 """Defines loss functions."""
 
+import os
 import torch
 import numpy as np
 import torch.nn.functional as F
 import sys
-sys.path.append('../../../')
+sys.path.append(os.getcwd())
 from fourier import fourier_dissimilarity
 
 __all__ = ['FourierRegularizedLogisticGANLoss']
