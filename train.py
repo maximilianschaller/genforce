@@ -16,6 +16,9 @@ from utils.logger import build_logger
 from utils.misc import init_dist
 from utils.misc import DictAction, parse_config, update_config
 
+import sys
+sys.path.append('../')
+
 
 def parse_args():
     """Parses arguments."""

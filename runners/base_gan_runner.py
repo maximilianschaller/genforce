@@ -11,6 +11,7 @@ import torch.distributed as dist
 import sys
 sys.path.append('..')
 print(sys.path)
+print(os.getcwd())
 from metrics.inception import build_inception_model
 from metrics.fid import extract_feature
 from metrics.fid import compute_fid
