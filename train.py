@@ -89,6 +89,7 @@ def main():
     torch.backends.cudnn.deterministic = config.cudnn_deterministic
 
     # Set random seed.
+    config.seed = 26
     if config.seed is not None:
         random.seed(config.seed)
         np.random.seed(config.seed)

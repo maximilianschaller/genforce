@@ -142,4 +142,4 @@ class FourierRegularizedLogisticGANLoss(LogisticGANLoss):
         runner.running_stats.update({'fourier_loss': fourier_loss.item()})
         total_loss = g_loss + self.lamb * fourier_loss
         runner.running_stats.update({'total_loss': total_loss.item()})
-        return g_loss
+        return total_loss
