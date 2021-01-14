@@ -80,7 +80,7 @@ def main():
         config.modules['generator']['opt']['base_lr'] = float(args.baseLR)/2
     if args.nethz != None:
         config.nethz = args.nethz
-    config.savename = args.lamb.replace('.','dot') + '_' + args.metric.replace('.','dot') + '_' + args.baseLR.replace('.','dot')
+    config.savename = args.adv + '_' + args.lamb.replace('.','dot') + '_' + args.metric.replace('.','dot') + '_' + args.baseLR.replace('.','dot')
 
     config.data['train']['root_dir'] = '/cluster/scratch/' + config.nethz + '/data'
     config.data['val']['root_dir'] = '/cluster/scratch/' + config.nethz + '/data'
