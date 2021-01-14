@@ -47,6 +47,7 @@ def parse_args():
                         help='Rank of the current node. (default: %(default)s)')
     parser.add_argument('--options', nargs='+', action=DictAction,
                         help='arguments in dict')
+    parser.add_argument('--adv', type=str)
     parser.add_argument('--lamb', type=str)
     parser.add_argument('--metric', type=str)
     parser.add_argument('--baseLR', type=str)
@@ -69,6 +70,8 @@ def main():
     config.seed = args.seed
     config.launcher = args.launcher
     config.backend = args.backend
+    if args.adv != None:
+        config.loss['g_loss_kwargs']['adv'] = float(args.adv)
     if args.lamb != None:
         config.loss['g_loss_kwargs']['lamb'] = float(args.lamb)
     if args.metric != None:

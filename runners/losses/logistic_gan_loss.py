@@ -118,6 +118,7 @@ class LogisticGANLoss(object):
 class FourierRegularizedLogisticGANLoss(LogisticGANLoss):
     def __init__(self, runner, d_loss_kwargs=None, g_loss_kwargs=None):
         super(FourierRegularizedLogisticGANLoss, self).__init__(runner, d_loss_kwargs, g_loss_kwargs)
+        self.adv = self.g_loss_kwargs['adv']
         self.lamb = self.g_loss_kwargs['lamb']
         self.metric = self.g_loss_kwargs['metric']
         self.threshold = self.g_loss_kwargs['threshold']
@@ -140,6 +141,6 @@ class FourierRegularizedLogisticGANLoss(LogisticGANLoss):
         fourier_loss = fourier_dissimilarity(fakes, data['image'], self.metric, self.threshold)
         fourier_loss = torch.mean(fourier_loss)
         runner.running_stats.update({'fourier_loss': fourier_loss.item()})
-        total_loss = g_loss + self.lamb * fourier_loss
+        total_loss = (self.adv * g_loss) + (self.lamb * fourier_loss)
         runner.running_stats.update({'total_loss': total_loss.item()})
         return total_loss
